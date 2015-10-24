@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="297dp"
         android:layout_weight="1"
-        android:id="@+id/">
+        android:id="@+id/camera_layout/">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/picture_button"
-            android:id="@+id/picture_button"
+            android:id="@+id/camera_button"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp" />

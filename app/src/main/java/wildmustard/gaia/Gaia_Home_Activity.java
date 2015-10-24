@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +34,7 @@ import com.clarifai.api.exception.ClarifaiException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.File;
 
 import static android.provider.MediaStore.Images.Media;
 
@@ -52,15 +55,33 @@ public class Gaia_Home_Activity extends Activity {
     private ImageView imageView;
     private TextView textView;
 
+    public static String logtag = "Camera";
+    public static int TAKE_PICTURE = 1;
+    private Uri imageUri;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gaia__home_);
 
+        Button cameraButton = (Button)findViewById(R.id.camera_layout);
+        cameraButton.setOnClickListener(cameraListener);
     }
 
+    private View.OnClickListener cameraListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            takePhoto(v);
+        }
+    };
 
-
+    private void takePhoto(View v){
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        File photo = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "image.jpg");
+        imageUri = Uri.fromFile(photo);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(intent, TAKE_PICTURE);
+    }
 
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
