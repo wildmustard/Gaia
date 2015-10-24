@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="297dp"
-        android:layout_weight=".85">
+        android:layout_weight="1"
+        android:id="@+id/">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -28,19 +29,15 @@
             android:id="@+id/swap_camera"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:layout_weight=".15">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="picture_button"
             android:id="@+id/picture_button"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/swap_camera"
+            android:layout_marginBottom="20dp" />
     </RelativeLayout>
+
 </LinearLayout>
